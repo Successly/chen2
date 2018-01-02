@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+	function data(value,date,len){
+			if(value){
+				var arr=[];
+				var year=date.getFullYear();
+				var month=date.getMonth();
+				var data=date.getDate();
+				var arr1=[31,29,31,30,31,30,31,31,30,31,30,31];
+				var arr2=[31,28,31,30,31,30,31,31,30,31,30,31];
+				var isLeap=(year%4==0&&year%100!=0||year%400==0)?true:false;
+				arr=isLeap?arr1:arr2;
+				console.log(year+"-"+month+'-'+data);
+				data=data-len;
+			}
+			if(data>=0){
+                return new Date(year,month,(data+1));
+			}else{
+                   j=month-1;
+                   if(j<0){
+                      year=year-1;
+                      j=arr.length-1;
+                   } 
+				  for(var i=j;i>=0;i--){
+					     data=data+arr[i];
+					     console.log(data);
+					     if(data>=0){
+					     	console.log("data");
+					     	// break;
+					     }
+				}
+				return new Date(year,i,(data+1));
+				console.log('第几月'+i);
+			}
+
+	}
+
+	console.log(data(1,new Date(2017,11,20),3)); //包含当前
+	// console.log(new Date().getMonth());
+</script>	
+</html>
